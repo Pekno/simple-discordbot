@@ -1,0 +1,114 @@
+{
+	"error": {
+		"opgg": {
+			"no_opggid": "Unable to locate the OPGG ID from the provided webpage. Please ensure the webpage contains the correct summoner information.",
+			"no_summoner": "Failed to retrieve the summoner details from the OPGG API. This could be due to network issues or incorrect summoner name.",
+			"no_champions_list": "Unable to fetch the champion list from OPGG. This may indicate a service disruption or an issue with the API request."
+		},
+		"riot": {
+			"no_api_key": "The RIOT API key is not defined or missing. Please verify that a valid API key is configured in the environment.",
+			"no_summoner_match": "The provided summoner name cannot be matched to the format <gameName>#<tagLine>. Please double-check the input.",
+			"missing_summoner_field": "Required summoner information is incomplete. Ensure that the summoner's Name, Tag, or Region fields are correctly provided.",
+			"no_region_or_gameid": "Either the region or game ID is missing. Both are required to proceed with the request.",
+			"missing_summorner_puuid": "The summoner's PUUID is not defined at this stage of the process. Ensure the summoner details have been fetched correctly."
+		},
+		"discord": {
+			"no_command_name": "No command name was provided. Please specify a command.",
+			"command_not_found": "The requested command could not be found. Please ensure the command name is correct.",
+			"no_configured_command": "There are no Discord commands configured. Please configure at least one command.",
+			"no_discord_token": "The Discord token is not configured. Please set up your Discord bot token.",
+			"no_discord_id": "The Discord ID is not configured. Please provide a valid Discord ID.",
+			"no_interaction": "The specified interaction could not be found. Please ensure it is valid.",
+			"no_guild_id": "The command was not sent from a server. Please ensure you are in a Discord server.",
+			"wrong_userId": "Cannot find userId on this server"
+		},
+		"lurker": {
+			"no_server_lurker": "No available Lurker bot was found for the specified server. Please verify server configuration or availability.",
+			"no_listener": "Listener service is not registered or initialized for this process. Ensure the listener is properly set up.",
+			"no_wage_on_gameId": "No wager could be found for the specified GameId. Please check if a wager has been placed for this game.",
+			"cannot_wager": "This user is not authorized to place a wager. Verify user permissions or account status.",
+			"cannot_wager_amount": "The wager amount exceeds the user’s available balance. Please wager an amount within the limit.",
+			"wrong_amount": "The provided amount '{{amount}}' is invalid. Ensure the amount is a valid number.",
+			"positive_amount": "The amount '{{amount}}' must be greater than 0. Negative or zero values are not allowed.",
+			"no_summoner": "No summoner name has been provided. Please input a valid summoner name to proceed.",
+			"summoner_exists": "The summoner has already been added to the system. Duplicate entries are not allowed.",
+			"lurker_running": "A Lurker instance is already running for this process. No need to start another one."
+		},
+		"_default": "Error : {{message}}"
+	},
+	"display": {
+		"side": {
+			"blue_side": "Blue Side",
+			"red_side": "Red Side",
+			"blue_side_caps": "BLUE Side",
+			"red_side_caps": "RED Side",
+			"pot": "POT"
+		},
+		"modal": {
+			"title": "Wager on {{side}}",
+			"label": "What's the amount you want to wager ?",
+			"current": "You currently have {{amount}}"
+		},
+		"wager": {
+			"gameEnd": {
+				"SURRENDER": "by Surrender",
+				"REMAKE": "by Remake"
+			},
+			"gametype": {
+				"SOLORANKED": "SOLO / DUO Q",
+				"FLEXRANKED": "FLEX",
+				"ARAM": "ARAM",
+				"normal": "NORMAL GAME",
+				"unknown": "CUSTOM"
+			},
+			"result": {
+				"win": "WON",
+				"loose": "LOST",
+				"you_won": "you won {{amount}}",
+				"you_bet": "By wagering {{amount}} on {{side}} on this Game :"
+			},
+			"winrate": "Winrate",
+			"duration": "Duration",
+			"game_ended": "Game Ended",
+			"game_started": "Game Started at",
+			"victory_from": "Victory from",
+			"who_win": "Who's gonna win ?",
+			"known_participants": "Known participants",
+			"pot": "POT",
+			"creeps": "cs"
+		},
+		"command": {
+			"stop": {
+				"description": "Tell the bot to stop notification in this channel",
+				"reply": "Bot will now stop sending notification on this channel"
+			},
+			"start": {
+				"description": "Tell the bot to start and notify in this channel",
+				"reply": "Bot will now send notification on this channel"
+			},
+			"add": {
+				"params": {
+					"summoner_region": "region of the summoner to be added",
+					"summoner_name": "name of the summoner to be added like <AAAAA#BBB>"
+				},
+				"description": "Add a new summoner to check",
+				"reply": "Added {{summonerName}} to the check list"
+			},
+			"remove": {
+				"params": {
+					"summoner_region": "region of the summoner to be removed",
+					"summoner_name": "name of the summoner to be removed like <AAAAA#BBB>"
+				},
+				"description": "Remove a summoner from the check list",
+				"reply": "Removed {{summonerName}} to the check list"
+			},
+			"list": {
+				"description": "Get the summoners from the check list",
+				"reply": "Watching this Summoners : {{summonerText}}"
+			},
+			"scoreboard": {
+				"description": "Get the scoreboard from the bot"
+			}
+		}
+	}
+}

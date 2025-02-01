@@ -1,0 +1,15 @@
+{
+	"error": {
+		"discord": {
+			"no_command_name": "Es wurde kein Befehlsname angegeben. Bitte geben Sie einen Befehl an.",
+			"command_not_found": "Der angeforderte Befehl konnte nicht gefunden werden. Bitte stellen Sie sicher, dass der Befehlsname korrekt ist.",
+			"no_configured_command": "Es sind keine Discord-Befehle konfiguriert. Bitte konfigurieren Sie mindestens einen Befehl.",
+			"no_discord_token": "Das Discord-Token ist nicht konfiguriert. Bitte richten Sie Ihr Discord-Bot-Token ein.",
+			"no_discord_id": "Die Discord-ID ist nicht konfiguriert. Bitte geben Sie eine gültige Discord-ID an.",
+			"no_interaction": "Die angegebene Interaktion konnte nicht gefunden werden. Bitte stellen Sie sicher, dass sie gültig ist.",
+			"no_guild_id": "Der Befehl wurde nicht von einem Server gesendet. Bitte stellen Sie sicher, dass Sie sich in einem Discord-Server befinden.",
+			"wrong_userId": "Die userId konnte auf diesem Server nicht gefunden werden."
+		},
+		"_default": "Fehler: {{message}}"
+	}
+}
