@@ -1,8 +1,12 @@
 # SimpleDiscordBot
 
-![GitHub License](https://img.shields.io/badge/license-ISC-blue.svg)
+<div align="center">
+  
+![GitHub License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)
-![Discord.js](https://img.shields.io/badge/discord.js-v14-blue)
+[![npm version](https://img.shields.io/npm/v/@pekno/simple-discordbot.svg)](https://www.npmjs.com/package/@pekno/simple-discordbot)
+
+</div>
 
 `SimpleDiscordBot` is a TypeScript library designed to simplify the creation of Discord bots using `discord.js`. It provides a structured approach to handling bot interactions, command registration, and localization.
 
