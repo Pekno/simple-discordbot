@@ -1,0 +1,114 @@
+{
+	"error": {
+		"opgg": {
+			"no_opggid": "No se pudo encontrar el ID de OPGG en la página web proporcionada. Asegúrate de que la página contenga la información correcta del invocador.",
+			"no_summoner": "No se pudieron recuperar los detalles del invocador desde la API de OPGG. Esto podría deberse a problemas de red o un nombre de invocador incorrecto.",
+			"no_champions_list": "No se pudo obtener la lista de campeones de OPGG. Esto puede indicar una interrupción del servicio o un problema con la solicitud de la API."
+		},
+		"riot": {
+			"no_api_key": "La clave de la API de RIOT no está definida o falta. Verifica que se haya configurado una clave API válida en el entorno.",
+			"no_summoner_match": "El nombre del invocador proporcionado no coincide con el formato <gameName>#<tagLine>. Verifica la entrada.",
+			"missing_summoner_field": "La información requerida del invocador está incompleta. Asegúrate de que el nombre, la etiqueta o la región del invocador se hayan proporcionado correctamente.",
+			"no_region_or_gameid": "Falta la región o el ID del juego. Ambos son necesarios para proceder con la solicitud.",
+			"missing_summorner_puuid": "El PUUID del invocador no está definido en esta etapa del proceso. Asegúrate de que los detalles del invocador se hayan recuperado correctamente."
+		},
+		"discord": {
+			"no_command_name": "No se proporcionó ningún nombre de comando. Por favor, especifica un comando.",
+			"command_not_found": "No se pudo encontrar el comando solicitado. Asegúrate de que el nombre del comando sea correcto.",
+			"no_configured_command": "No hay comandos de Discord configurados. Configura al menos un comando.",
+			"no_discord_token": "El token de Discord no está configurado. Configura el token de tu bot de Discord.",
+			"no_discord_id": "El ID de Discord no está configurado. Proporciona un ID de Discord válido.",
+			"no_interaction": "No se pudo encontrar la interacción especificada. Asegúrate de que sea válida.",
+			"no_guild_id": "El comando no fue enviado desde un servidor. Asegúrate de estar en un servidor de Discord.",
+			"wrong_userId": "No se puede encontrar el userId en este servidor."
+		},
+		"lurker": {
+			"no_server_lurker": "No se encontró ningún bot Lurker disponible para el servidor especificado. Verifica la configuración o disponibilidad del servidor.",
+			"no_listener": "El servicio de escucha no está registrado o inicializado para este proceso. Asegúrate de que el servicio de escucha esté configurado correctamente.",
+			"no_wage_on_gameId": "No se encontró ninguna apuesta para el ID del juego especificado. Verifica si se ha realizado una apuesta para este juego.",
+			"cannot_wager": "Este usuario no está autorizado para realizar una apuesta. Verifica los permisos o el estado de la cuenta.",
+			"cannot_wager_amount": "El monto de la apuesta excede el saldo disponible del usuario. Apuesta un monto dentro del límite.",
+			"wrong_amount": "El monto proporcionado '{{amount}}' no es válido. Asegúrate de que el monto sea un número válido.",
+			"positive_amount": "El monto '{{amount}}' debe ser mayor a 0. No se permiten valores negativos o cero.",
+			"no_summoner": "No se proporcionó ningún nombre de invocador. Introduce un nombre de invocador válido para continuar.",
+			"summoner_exists": "El invocador ya ha sido añadido al sistema. No se permiten entradas duplicadas.",
+			"lurker_running": "Ya hay una instancia de Lurker en ejecución para este proceso. No es necesario iniciar otra."
+		},
+		"_default": "Error: {{message}}"
+	},
+	"display": {
+		"side": {
+			"blue_side": "Lado Azul",
+			"red_side": "Lado Rojo",
+			"blue_side_caps": "LADO AZUL",
+			"red_side_caps": "LADO ROJO",
+			"pot": "POTE"
+		},
+		"modal": {
+			"title": "Apostar en {{side}}",
+			"label": "¿Cuál es la cantidad que quieres apostar?",
+			"current": "Actualmente tienes {{amount}}"
+		},
+		"wager": {
+			"gameEnd": {
+				"SURRENDER": "por Rendición",
+				"REMAKE": "por Remake"
+			},
+			"gametype": {
+				"SOLORANKED": "SOLO / DUO Q",
+				"FLEXRANKED": "FLEX",
+				"ARAM": "ARAM",
+				"normal": "JUEGO NORMAL",
+				"unknown": "PERSONALIZADO"
+			},
+			"result": {
+				"win": "GANADO",
+				"loose": "PERDIDO",
+				"you_won": "ganaste {{amount}}",
+				"you_bet": "Apostando {{amount}} en {{side}} en este Juego:"
+			},
+			"winrate": "Porcentaje de victorias",
+			"duration": "Duración",
+			"game_ended": "Juego terminado",
+			"game_started": "Juego iniciado a las",
+			"victory_from": "Victoria de",
+			"who_win": "¿Quién ganará?",
+			"known_participants": "Participantes conocidos",
+			"pot": "POTE",
+			"creeps": "cs"
+		},
+		"command": {
+			"stop": {
+				"description": "Di al bot que detenga las notificaciones en este canal",
+				"reply": "El bot ahora dejará de enviar notificaciones en este canal"
+			},
+			"start": {
+				"description": "Di al bot que comience y notifique en este canal",
+				"reply": "El bot ahora enviará notificaciones en este canal"
+			},
+			"add": {
+				"params": {
+					"summoner_region": "región del invocador a añadir",
+					"summoner_name": "nombre del invocador a añadir como <AAAAA#BBB>"
+				},
+				"description": "Añadir un nuevo invocador para verificar",
+				"reply": "{{summonerName}} ha sido añadido a la lista de verificación"
+			},
+			"remove": {
+				"params": {
+					"summoner_region": "región del invocador a eliminar",
+					"summoner_name": "nombre del invocador a eliminar como <AAAAA#BBB>"
+				},
+				"description": "Eliminar un invocador de la lista de verificación",
+				"reply": "{{summonerName}} ha sido eliminado de la lista de verificación"
+			},
+			"list": {
+				"description": "Obtener los invocadores de la lista de verificación",
+				"reply": "Viendo estos invocadores: {{summonerText}}"
+			},
+			"scoreboard": {
+				"description": "Obtener el marcador del bot"
+			}
+		}
+	}
+}

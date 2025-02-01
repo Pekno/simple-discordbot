@@ -1,0 +1,114 @@
+{
+	"error": {
+		"opgg": {
+			"no_opggid": "Impossibile trovare l'ID OPGG dalla pagina web fornita. Assicurati che la pagina contenga le informazioni corrette sull'evocatore.",
+			"no_summoner": "Impossibile recuperare i dettagli dell'evocatore dall'API OPGG. Questo potrebbe essere dovuto a problemi di rete o a un nome evocatore errato.",
+			"no_champions_list": "Impossibile recuperare l'elenco dei campioni da OPGG. Questo potrebbe indicare un'interruzione del servizio o un problema con la richiesta API."
+		},
+		"riot": {
+			"no_api_key": "La chiave API di RIOT non è definita o mancante. Verifica che una chiave API valida sia configurata nell'ambiente.",
+			"no_summoner_match": "Il nome dell'evocatore fornito non corrisponde al formato <gameName>#<tagLine>. Controlla l'input.",
+			"missing_summoner_field": "Le informazioni richieste sull'evocatore sono incomplete. Assicurati che il nome, il tag o la regione dell'evocatore siano forniti correttamente.",
+			"no_region_or_gameid": "Manca la regione o l'ID del gioco. Entrambi sono necessari per procedere con la richiesta.",
+			"missing_summorner_puuid": "Il PUUID dell'evocatore non è definito a questo stadio del processo. Assicurati che i dettagli dell'evocatore siano stati correttamente recuperati."
+		},
+		"discord": {
+			"no_command_name": "Nessun nome di comando è stato fornito. Specifica un comando.",
+			"command_not_found": "Il comando richiesto non è stato trovato. Assicurati che il nome del comando sia corretto.",
+			"no_configured_command": "Non ci sono comandi Discord configurati. Configura almeno un comando.",
+			"no_discord_token": "Il token Discord non è configurato. Configura il token del bot Discord.",
+			"no_discord_id": "L'ID Discord non è configurato. Fornisci un ID Discord valido.",
+			"no_interaction": "L'interazione specificata non è stata trovata. Assicurati che sia valida.",
+			"no_guild_id": "Il comando non è stato inviato da un server. Assicurati di essere su un server Discord.",
+			"wrong_userId": "Impossibile trovare l'ID utente su questo server."
+		},
+		"lurker": {
+			"no_server_lurker": "Non è stato trovato alcun bot Lurker disponibile per il server specificato. Verifica la configurazione o la disponibilità del server.",
+			"no_listener": "Il servizio di ascolto non è registrato o inizializzato per questo processo. Assicurati che l'ascoltatore sia configurato correttamente.",
+			"no_wage_on_gameId": "Non è stata trovata alcuna scommessa per l'ID del gioco specificato. Verifica se è stata piazzata una scommessa per questo gioco.",
+			"cannot_wager": "Questo utente non è autorizzato a piazzare una scommessa. Verifica i permessi o lo stato dell'account dell'utente.",
+			"cannot_wager_amount": "L'importo della scommessa supera il saldo disponibile dell'utente. Scommetti un importo entro il limite.",
+			"wrong_amount": "L'importo fornito '{{amount}}' non è valido. Assicurati che l'importo sia un numero valido.",
+			"positive_amount": "L'importo '{{amount}}' deve essere maggiore di 0. Non sono ammessi valori negativi o pari a zero.",
+			"no_summoner": "Non è stato fornito alcun nome evocatore. Inserisci un nome evocatore valido per procedere.",
+			"summoner_exists": "L'evocatore è già stato aggiunto al sistema. Non sono consentiti duplicati.",
+			"lurker_running": "Un'istanza di Lurker è già in esecuzione per questo processo. Non è necessario avviarne un'altra."
+		},
+		"_default": "Errore: {{message}}"
+	},
+	"display": {
+		"side": {
+			"blue_side": "Lato Blu",
+			"red_side": "Lato Rosso",
+			"blue_side_caps": "Lato BLU",
+			"red_side_caps": "Lato ROSSO",
+			"pot": "POT"
+		},
+		"modal": {
+			"title": "Scommetti su {{side}}",
+			"label": "Qual è l'importo che vuoi scommettere?",
+			"current": "Attualmente hai {{amount}}"
+		},
+		"wager": {
+			"gameEnd": {
+				"SURRENDER": "per Abbandono",
+				"REMAKE": "per Remake"
+			},
+			"gametype": {
+				"SOLORANKED": "SOLO / DUO Q",
+				"FLEXRANKED": "FLEX",
+				"ARAM": "ARAM",
+				"normal": "PARTITA NORMALE",
+				"unknown": "PERSONALIZZATO"
+			},
+			"result": {
+				"win": "VINTO",
+				"loose": "PERSO",
+				"you_won": "hai vinto {{amount}}",
+				"you_bet": "Scommettendo {{amount}} su {{side}} in questa partita:"
+			},
+			"winrate": "Percentuale di vittoria",
+			"duration": "Durata",
+			"game_ended": "Partita terminata",
+			"game_started": "Partita iniziata alle",
+			"victory_from": "Vittoria da",
+			"who_win": "Chi vincerà?",
+			"known_participants": "Partecipanti conosciuti",
+			"pot": "POT",
+			"creeps": "cs"
+		},
+		"command": {
+			"stop": {
+				"description": "Di' al bot di interrompere le notifiche in questo canale",
+				"reply": "Il bot ora smetterà di inviare notifiche in questo canale"
+			},
+			"start": {
+				"description": "Di' al bot di avviare e notificare in questo canale",
+				"reply": "Il bot ora invierà notifiche in questo canale"
+			},
+			"add": {
+				"params": {
+					"summoner_region": "regione dell'evocatore da aggiungere",
+					"summoner_name": "nome dell'evocatore da aggiungere come <AAAAA#BBB>"
+				},
+				"description": "Aggiungi un nuovo evocatore da controllare",
+				"reply": "{{summonerName}} è stato aggiunto alla lista di controllo"
+			},
+			"remove": {
+				"params": {
+					"summoner_region": "regione dell'evocatore da rimuovere",
+					"summoner_name": "nome dell'evocatore da rimuovere come <AAAAA#BBB>"
+				},
+				"description": "Rimuovi un evocatore dalla lista di controllo",
+				"reply": "{{summonerName}} è stato rimosso dalla lista di controllo"
+			},
+			"list": {
+				"description": "Ottieni gli evocatori dalla lista di controllo",
+				"reply": "Guardando questi evocatori: {{summonerText}}"
+			},
+			"scoreboard": {
+				"description": "Ottieni la classifica dal bot"
+			}
+		}
+	}
+}

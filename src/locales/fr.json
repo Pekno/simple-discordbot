@@ -1,0 +1,115 @@
+{
+	"error": {
+		"opgg": {
+			"no_opggid": "Impossible de localiser l'ID OPGG à partir de la page fournie. Veuillez vous assurer que la page contient les informations correctes sur l'invocateur.",
+			"no_summoner": "Échec de la récupération des détails de l'invocateur à partir de l'API OPGG. Cela peut être dû à des problèmes de réseau ou à un nom d'invocateur incorrect.",
+			"no_champions_list": "Impossible de récupérer la liste des champions depuis OPGG. Cela peut indiquer une interruption du service ou un problème avec la requête API."
+		},
+		"riot": {
+			"no_api_key": "La clé API RIOT n'est pas définie ou est manquante. Veuillez vérifier qu'une clé API valide est configurée dans l'environnement.",
+			"no_summoner_match": "Le nom d'invocateur fourni ne correspond pas au format <gameName>#<tagLine>. Veuillez vérifier l'entrée.",
+			"missing_summoner_field": "Les informations requises sur l'invocateur sont incomplètes. Assurez-vous que les champs Nom, Tag ou Région de l'invocateur sont correctement fournis.",
+			"no_region_or_gameid": "La région ou l'ID du jeu est manquant(e). Les deux sont nécessaires pour continuer la requête.",
+			"missing_summorner_puuid": "Le PUUID de l'invocateur n'est pas défini à ce stade du processus. Assurez-vous que les détails de l'invocateur ont été correctement récupérés."
+		},
+		"discord": {
+			"no_command_name": "Aucun nom de commande n'a été fourni. Veuillez spécifier une commande.",
+			"command_not_found": "La commande demandée n'a pas été trouvée. Veuillez vérifier que le nom de la commande est correct.",
+			"no_configured_command": "Aucune commande Discord n'est configurée. Veuillez configurer au moins une commande.",
+			"no_discord_token": "Le jeton Discord n'est pas configuré. Veuillez configurer votre jeton de bot Discord.",
+			"no_discord_id": "L'ID Discord n'est pas configuré. Veuillez fournir un ID Discord valide.",
+			"no_interaction": "L'interaction spécifiée n'a pas été trouvée. Veuillez vérifier qu'elle est valide.",
+			"no_guild_id": "La commande n'a pas été envoyée depuis un serveur. Assurez-vous d'être dans un serveur Discord.",
+			"wrong_userId": "Impossible de trouver l'ID utilisateur sur ce serveur."
+		},
+		"lurker": {
+			"no_server_lurker": "Aucun bot Lurker disponible n'a été trouvé pour le serveur spécifié. Veuillez vérifier la configuration ou la disponibilité du serveur.",
+			"no_listener": "Le service d'écoute n'est pas enregistré ou initialisé pour ce processus. Assurez-vous que l'écouteur est correctement configuré.",
+			"no_wage_on_gameId": "Aucun pari n'a été trouvé pour l'ID de jeu spécifié. Veuillez vérifier si un pari a été placé pour ce jeu.",
+			"cannot_wager": "Cet utilisateur n'est pas autorisé à placer un pari. Vérifiez les autorisations de l'utilisateur ou l'état du compte.",
+			"cannot_wager_amount": "Le montant du pari dépasse le solde disponible de l'utilisateur. Veuillez parier un montant dans la limite.",
+			"wrong_amount": "Le montant fourni '{{amount}}' est invalide. Assurez-vous que le montant est un nombre valide.",
+			"positive_amount": "Le montant '{{amount}}' doit être supérieur à 0. Les valeurs négatives ou nulles ne sont pas autorisées.",
+			"no_summoner": "Aucun nom d'invocateur n'a été fourni. Veuillez entrer un nom d'invocateur valide pour continuer.",
+			"summoner_exists": "L'invocateur a déjà été ajouté au système. Les entrées en double ne sont pas autorisées.",
+			"lurker_running": "Un processus Lurker est déjà en cours pour cette opération. Il n'est pas nécessaire de démarrer un autre."
+		},
+		"_default": "Erreur : {{message}}"
+	},
+	"display": {
+		"side": {
+			"blue_side": "Équipe Bleu",
+			"red_side": "Équipe Rouge",
+			"blue_side_caps": "Équipe BLEU",
+			"red_side_caps": "Équipe ROUGE",
+			"pot": "POT"
+		},
+		"modal": {
+			"title": "Parier sur {{side}}",
+			"label": "Quel montant voulez-vous parier ?",
+			"current": "Vous avez actuellement {{amount}}"
+		},
+		"wager": {
+			"gameEnd": {
+				"SURRENDER": "par Abandon",
+				"REMAKE": "par Remake"
+			},
+			"gametype": {
+				"SOLORANKED": "SOLO / DUO Q",
+				"FLEXRANKED": "FLEX",
+				"ARAM": "ARAM",
+				"normal": "PARTIE NORMALE",
+				"unknown": "PERSONNALISÉ"
+			},
+			"result": {
+				"win": "GAGNÉ",
+				"loose": "PERDU",
+				"you_won": "vous avez gagné {{amount}}",
+				"you_bet": "En pariant {{amount}} sur {{side}} dans cette Partie :",
+				"lost": "display.wager.result.lost"
+			},
+			"winrate": "Taux de Victoire",
+			"duration": "Durée",
+			"game_ended": "Partie Terminé",
+			"game_started": "Partie Commencé à",
+			"victory_from": "Victoire de",
+			"who_win": "Qui va gagner ?",
+			"known_participants": "Participants connus",
+			"pot": "POT",
+			"creeps": "cs"
+		},
+		"command": {
+			"stop": {
+				"description": "Dites au bot d'arrêter les notifications dans ce canal",
+				"reply": "Le bot ne va plus envoyer de notifications dans ce canal"
+			},
+			"start": {
+				"description": "Dites au bot de commencer et d'envoyer des notifications dans ce canal",
+				"reply": "Le bot va maintenant envoyer des notifications dans ce canal"
+			},
+			"add": {
+				"params": {
+					"summoner_region": "région de l'invocateur à ajouter",
+					"summoner_name": "nom de l'invocateur à ajouter comme <AAAAA#BBB>"
+				},
+				"description": "Ajouter un nouvel invocateur à surveiller",
+				"reply": "Ajouté {{summonerName}} à la liste de surveillance"
+			},
+			"remove": {
+				"params": {
+					"summoner_region": "région de l'invocateur à retirer",
+					"summoner_name": "nom de l'invocateur à retirer comme <AAAAA#BBB>"
+				},
+				"description": "Supprimer un invocateur de la liste de surveillance",
+				"reply": "Retiré {{summonerName}} de la liste de surveillance"
+			},
+			"list": {
+				"description": "Obtenez la liste des invocateurs surveillés",
+				"reply": "Surveillance des Invocateurs : {{summonerText}}"
+			},
+			"scoreboard": {
+				"description": "Obtenez le tableau des scores du bot"
+			}
+		}
+	}
+}

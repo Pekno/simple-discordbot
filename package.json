@@ -1,0 +1,47 @@
+{
+  "name": "simple-discordbot",
+  "version": "0.0.1",
+  "main": "./dist/main/index.js",
+  "module": "./dist/main/index.js",
+  "types": "./dist/main/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc --build && scp -r src/locales dist/locales",
+    "lint": "eslint 'src/**/*.{js,ts}'",
+    "lint:fix": "eslint 'src/**/*.{js,ts}' --fix",
+    "format": "prettier --write 'src/**/*.{js,ts,json,css,md}'",
+    "check-exports": "attw --pack . --ignore-rules=cjs-resolves-to-esm",
+    "ci": "npm run build && npm run check-exports"
+  },
+  "type": "commonjs",
+  "files": [
+    "./dist"
+  ],
+  "author": "Pekno",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "axios": "^1.7.2",
+    "discord.js": "^14.15.3",
+    "i18n": "^0.15.1",
+    "typescript": "^5.5.3",
+    "winston": "^3.15.0",
+    "winston-daily-rotate-file": "^5.0.0"
+  },
+  "devDependencies": {
+    "@arethetypeswrong/cli": "^0.17.3",
+    "@eslint/js": "^9.11.1",
+    "@types/eslint__js": "^8.42.3",
+    "@types/i18n": "^0.13.12",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.10.0",
+    "eslint": "^9.11.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "globals": "^15.9.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^8.7.0"
+  }
+}

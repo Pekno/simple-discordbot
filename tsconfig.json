@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["es2021"],
+    "module": "CommonJS",
+    "skipLibCheck": true,
+    "rootDir": "src/",
+    "outDir": "dist/",
+    "moduleResolution": "node",
+    "baseUrl": "src/",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "noImplicitAny": true,
+    "strictPropertyInitialization": false,
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "plugins", "typings", "dist", "eslint.config.mjs"]
+}
