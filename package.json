@@ -4,6 +4,10 @@
   "main": "./dist/main/index.js",
   "module": "./dist/main/index.js",
   "types": "./dist/main/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pekno/simple-discordbot.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc --build && scp -r src/locales dist/locales",
