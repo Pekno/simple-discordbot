@@ -19,7 +19,7 @@ This package was created to **reduce code duplication** across my Discord bot pr
 ## 📦 Installation
 
 ```sh
-npm install simple-discordbot
+npm install @pekno/simple-discordbot
 ```
 
 ---
