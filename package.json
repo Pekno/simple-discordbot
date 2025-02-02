@@ -1,6 +1,6 @@
 {
   "name": "@pekno/simple-discordbot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./dist/main/index.js",
   "module": "./dist/main/index.js",
   "types": "./dist/main/index.d.ts",
