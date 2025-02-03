@@ -13,6 +13,8 @@
 ## 🚀 Why This Package?
 
 This package was created to **reduce code duplication** across my Discord bot projects. After noticing a lot of shared logic between my bots, I decided to extract the core functionalities into a reusable NPM package. This makes bot development **faster, cleaner, and easier to maintain**.
+> [!TIP]
+> You can checkout my bots that use this libray, [League of Legends Gamble Bot](https://github.com/Pekno/lolgamblebot) & [SUNO Discord Bot](https://github.com/Pekno/sunobot)
 
 ---
 
