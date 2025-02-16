@@ -37,7 +37,7 @@ export class SimpleDiscordBot<T> {
 			try {
 				let action;
 				let extraInfo;
-				let payload;
+				let modalPayload;
 				if (interaction.isAutocomplete()) {
 					action = `${interaction.commandName}_autocomplete`;
 				} else if (interaction.isStringSelectMenu()) {
@@ -56,7 +56,7 @@ export class SimpleDiscordBot<T> {
 					const [command, ...infos] = interaction.customId.split(';');
 					action = `submit_${command}`;
 					extraInfo = this.parseKeyValueString(infos);
-					payload = interaction.fields;
+					modalPayload = interaction.fields;
 				} else if (!interaction.isChatInputCommand()) {
 					return;
 				}
@@ -66,7 +66,7 @@ export class SimpleDiscordBot<T> {
 					this.service,
 					action,
 					extraInfo,
-					payload
+					modalPayload
 				);
 			} catch (e: any) {
 				Loggers.get().error(e, e.stack);
@@ -118,7 +118,7 @@ export class SimpleDiscordBot<T> {
 	private parseKeyValueString(input: string[]): Record<string, string> {
 		return input.reduce(
 			(result, pair) => {
-				const [key, value] = pair.split(':');
+				const [key, value] = pair.split(':=');
 				if (key && value) {
 					result[key] = value;
 				}

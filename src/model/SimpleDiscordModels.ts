@@ -8,6 +8,7 @@ import {
 	ChatInputCommandInteraction,
 	Client,
 	CommandInteraction,
+	ModalSubmitFields,
 	ModalSubmitInteraction,
 } from 'discord.js';
 import { LocaleError } from './LocaleError';
@@ -33,7 +34,7 @@ export class CommandList<T> {
 		services: T,
 		commandName?: string,
 		extraInfo?: any,
-		payload?: any
+		modalPayload?: ModalSubmitFields
 	): Promise<void> => {
 		const cmdName =
 			commandName ?? (interaction as CommandInteraction).commandName;
@@ -45,7 +46,13 @@ export class CommandList<T> {
 			this._commands.get(cmdName) ?? (alias ? this._commands.get(alias) : null);
 		if (!command) throw new LocaleError('error.discord.command_not_found');
 
-		return command.execute(interaction, client, services, extraInfo, payload);
+		return command.execute(
+			interaction,
+			client,
+			services,
+			extraInfo,
+			modalPayload
+		);
 	};
 
 	build = (): {
@@ -76,7 +83,7 @@ export class Command<T, C extends AnyCommandInteraction> {
 		client: Client,
 		service: T,
 		extraInfo?: any,
-		payload?: any
+		modalPayload?: ModalSubmitFields
 	) => Promise<void>;
 
 	registerPredicate: () => boolean;

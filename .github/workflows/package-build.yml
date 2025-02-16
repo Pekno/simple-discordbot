@@ -1,4 +1,4 @@
-name: Build and Publish Docker Image
+name: Build NPM Package
 on:
   push:
     tags:
@@ -32,6 +32,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
+          registry-url: "https://registry.npmjs.org"
 
       # Install dependencies and build the project
       - name: Install and Build
@@ -40,3 +41,7 @@ jobs:
       # Run the CI command
       - name: Run CI
         run: npm run ci
+
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN:  ${{ secrets.NPM_TOKEN }}
