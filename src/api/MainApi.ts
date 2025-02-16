@@ -73,7 +73,14 @@ export class MainApi {
 	private startProcessing() {
 		if (this.timer === null) {
 			this.timer = setInterval(() => {
-				this.processQueue();
+				try {
+					this.processQueue();
+				} catch (error) {
+					Loggers.get().error(
+						`${this.apiName} : Error processing queue`,
+						error
+					);
+				}
 			}, this.requestInterval);
 
 			setInterval(() => {

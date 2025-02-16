@@ -196,7 +196,7 @@ class myFirstApi extends MainApi{
     //...
 }
 const requestPerMinutes = 30;
-const myFirstApi = new RiotAPI(
+const myFirstApi = new myFirstApi(
     { 'My-Header-Token': "value" },
     requestPerMinutes
 );
