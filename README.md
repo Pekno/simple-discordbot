@@ -112,21 +112,36 @@ simpleCommandsList.push(
 
 ### **Command with Options**
 
+The `CommandOption` class now provides factory methods for easier creation of different option types:
+
 ```ts
 import { Command, CommandList, CommandOption } from "simple-discordbot";
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, Client } from "discord.js";
+import { ChatInputCommandInteraction, Client } from "discord.js";
 
 simpleCommandsList.push(
   new Command({
     name: "add",
     description: "Adds an item",
     options: [
-      new CommandOption({
-        name: "item_name",
-        description: "The name of the item",
-        type: ApplicationCommandOptionType.String,
-        required: true,
-      }),
+      // Using the string factory method
+      CommandOption.string(
+        "item_name",
+        "The name of the item",
+        true, // required
+        false // autocomplete
+      ),
+      // Using the integer factory method
+      CommandOption.integer(
+        "quantity",
+        "The quantity to add",
+        false // optional
+      ),
+      // Using the boolean factory method
+      CommandOption.boolean(
+        "notify",
+        "Whether to send a notification",
+        false // optional
+      )
     ],
     execute: async (
       interaction: ChatInputCommandInteraction,
@@ -135,10 +150,24 @@ simpleCommandsList.push(
     ) => {
       await interaction.deferReply();
       const itemName = interaction.options.getString("item_name");
-      await interaction.editReply(`Added item: ${itemName}`);
+      const quantity = interaction.options.getInteger("quantity") ?? 1;
+      const notify = interaction.options.getBoolean("notify") ?? false;
+      
+      await interaction.editReply(`Added ${quantity} of ${itemName}. Notification: ${notify ? 'Yes' : 'No'}`);
     },
   })
 );
+```
+
+You can still use the traditional constructor approach if needed:
+
+```ts
+new CommandOption({
+  name: "item_name",
+  description: "The name of the item",
+  type: ApplicationCommandOptionType.String,
+  required: true,
+})
 ```
 
 ---
@@ -183,18 +212,18 @@ const client = await simpleBot.start(simpleCommandsList);
 > [!TIP]
 > Calling `start` will return the `Client` object used by the bot, if you ever need it somewhere else.
 
-## 🔥 Using (Throttled) API
+## 🔥 Using the API Client with Circuit Breaker
 
-### Creating the API classes
+### Creating API Classes
 
-You can extends `MainApi` if you want to use the built-in API, it can be throttled to a limited request per minutes
+You can extend `MainApi` to create custom API clients with built-in request queuing, rate limiting, and circuit breaker functionality.
 
 ```ts
-class myFirstApi extends MainApi{
+class MyFirstApi extends MainApi {
     //...
 }
 const requestPerMinutes = 30;
-const myFirstApi = new RiotAPI(
+const myFirstApi = new MyFirstApi(
     { 'My-Header-Token': "value" },
     requestPerMinutes
 );
@@ -207,12 +236,13 @@ class MySecondApi extends MainApi {
 const mySecondApi = new MySecondApi();
 ```
 
-### Example: Making an API Request
+### Making API Requests
 
-Then by just using the `get` function available from `MainApi`, the request is queued and will be resolved as soon as possible depending if a `maxRequestsPerMinute` is defined.
+The `MainApi` class now provides methods for all common HTTP verbs. All requests are queued and processed according to rate limits.
 
 ```ts
-fetchData = async (endpoint: string): Promise<any> => {
+// GET request
+const getData = async (endpoint: string): Promise<any> => {
   try {
     const response = await this.get(`https://api.example.com/${endpoint}`);
     return response.data;
@@ -221,6 +251,35 @@ fetchData = async (endpoint: string): Promise<any> => {
     throw error;
   }
 };
+
+// POST request
+const createData = async (endpoint: string, data: any): Promise<any> => {
+  try {
+    const response = await this.post(`https://api.example.com/${endpoint}`, data);
+    return response.data;
+  } catch (error: any) {
+    throw error;
+  }
+};
+
+// Other available methods: put(), delete(), patch()
+```
+
+### Circuit Breaker Protection
+
+The API client includes a circuit breaker that prevents cascading failures when external services are experiencing issues:
+
+- **Closed State**: Normal operation, requests flow through
+- **Open State**: After multiple failures, requests are blocked to prevent overloading the failing service
+- **Half-Open State**: After a timeout period, allows a test request to check if the service has recovered
+
+### Resource Management
+
+When you're done with an API instance, properly dispose of it to prevent memory leaks:
+
+```ts
+// Clean up resources when done
+myApi.dispose();
 ```
 
 ---
@@ -236,6 +295,7 @@ This project is licensed under **MIT**.
 - This package relies on `discord.js`, make sure to install it.
 - The library includes **i18n support**, allowing easy localization.
 - The command structure is **fully typed**, making development safer.
+- All classes and methods are thoroughly documented with JSDoc comments.
 
 ---
 
@@ -245,4 +305,3 @@ Contributions and feedback are always welcome!
 If you have any suggestions or issues, feel free to open an issue or submit a pull request.
 
 Happy coding! 🎉
-
