@@ -265,7 +265,15 @@ export class MainApi {
 	private startProcessing() {
 		if (this.queueTimer === null) {
 			// Start queue processing timer
-			this.queueTimer = setInterval(() => {
+			this.queueTimer = setInterval(async () => {
+				try {
+					await this.processQueue();
+				} catch (error) {
+					Loggers.get().error(
+						`${this.apiName} : Error processing queue`,
+						error
+					);
+				}
 				this.processQueue();
 			}, this.requestInterval);
 

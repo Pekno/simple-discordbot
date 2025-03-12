@@ -13,6 +13,8 @@
 ## 🚀 Why This Package?
 
 This package was created to **reduce code duplication** across my Discord bot projects. After noticing a lot of shared logic between my bots, I decided to extract the core functionalities into a reusable NPM package. This makes bot development **faster, cleaner, and easier to maintain**.
+> [!TIP]
+> You can checkout my bots that use this libray, [League of Legends Gamble Bot](https://github.com/Pekno/lolgamblebot) & [SUNO Discord Bot](https://github.com/Pekno/sunobot)
 
 ---
 
@@ -76,12 +78,12 @@ const simpleBot = new SimpleDiscordBot<MyService>(
 | `clickAlias`     | `string`                                       | Alias for triggering the command via interactions. |
 | `description`    | `string`                                       | Command description.                            |
 | `options`        | `CommandOption[]`                              | List of available options for the command.      |
-| `execute`        | `(interaction, client, service, extraInfo?, payload?) => Promise<void>` | Function to execute when the command is triggered. |
+| `execute`        | `(interaction, client, service, extraInfo?, modalPayload?) => Promise<void>` | Function to execute when the command is triggered. |
 | `registerPredicate` | `() => boolean`                            | Function to determine if the command should be registered (usefull for command only based on available features). |
 
 > [!TIP]
-> `execute`'s' `extraInfo` is an object containing all data passed through `customId`, for example if you fill a button with `A=1;B=2;C=3`, `extraInfo` will be equal `{A: "1", B: "2", C: "3"}`.
-> `execute`'s' `payload` is an object containing data from modals.
+> `execute`'s' `extraInfo` is an object containing all data passed through `customId`, for example if you fill a button with `command;A:=1;B:=2;C:=3`, `extraInfo` will be equal `{A: "1", B: "2", C: "3"}`.
+> `execute`'s' `modalPayload` is an object containing data from modals.
 
 ### **Basic Command Example**
 
@@ -186,10 +188,10 @@ simpleCommandsList.push(
       client: Client,
       myService: MyService,
       extraInfo: any,
-      payload: any
+      modalPayload: ModalSubmitFields
     ) => {
       const { userId } = extraInfo as { userId: string };
-      const { feedback } = payload as { feedback: string };
+      const feedback = modalPayload?.getField('feedback')?.value;
       await interaction.deferReply({ ephemeral: true });
       if (!feedback) throw new Error("Feedback cannot be empty.");
       console.log(`User ${userId} submitted feedback: ${feedback}`);
