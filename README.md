@@ -1,4 +1,4 @@
-# SimpleDiscordBot
+# ![Logo](logo.png) Simple-DiscordBot
 
 <div align="center">
   
@@ -6,7 +6,6 @@
 ![TypeScript](https://img.shields.io/badge/language-TypeScript-blue)
 [![npm version](https://img.shields.io/npm/v/@pekno/simple-discordbot.svg)](https://www.npmjs.com/package/@pekno/simple-discordbot)
 [![npm download](https://img.shields.io/npm/d18m/%40pekno%2Fsimple-discordbot)](https://www.npmjs.com/package/@pekno/simple-discordbot)
-
 
 </div>
 
