@@ -32,8 +32,13 @@ export class CommandList<T> {
 	 * @param command The command to add
 	 * @returns The CommandList instance for chaining
 	 */
-	push = (command: Command<T, AnyCommandInteraction>): CommandList<T> => {
-		this._commands.set(command.name, command);
+	push = <C extends AnyCommandInteraction>(
+		command: Command<T, C>
+	): CommandList<T> => {
+		this._commands.set(
+			command.name,
+			command as Command<T, AnyCommandInteraction>
+		);
 		if (command.clickAlias) this._alias.set(command.clickAlias, command.name);
 		return this;
 	};

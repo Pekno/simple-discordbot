@@ -6,7 +6,6 @@ import axios, {
 import { ApiRequest } from '../model/ApiRequest';
 import { Loggers } from '../services/LoggerManager';
 import { CircuitBreaker, CircuitState } from '../utils/CircuitBreaker';
-import { LocaleError } from '../model/LocaleError';
 
 /**
  * API client with request queuing, rate limiting, and circuit breaker functionality
@@ -40,6 +39,9 @@ export class MainApi {
 	/** Circuit breaker for preventing cascading failures */
 	private circuitBreaker: CircuitBreaker;
 
+	/** HTTP status codes that should not trigger retries but be returned to caller */
+	private nonRetryableCodes: number[];
+
 	/**
 	 * Gets the name of the API class for logging purposes
 	 * @returns The name of the class that extends MainApi
@@ -53,12 +55,15 @@ export class MainApi {
 	 * Creates a new MainApi instance
 	 * @param apiHeader Headers to include with all requests
 	 * @param maxRequestsPerMinute Maximum number of requests allowed per minute (-1 for unlimited)
+	 * @param nonRetryableCodes HTTP status codes that should not trigger retries but be returned to caller
 	 */
 	constructor(
 		apiHeader: RawAxiosRequestHeaders = {},
-		maxRequestsPerMinute: number = -1
+		maxRequestsPerMinute: number = -1,
+		nonRetryableCodes: number[] = [404, 403]
 	) {
 		this.circuitBreaker = new CircuitBreaker();
+		this.nonRetryableCodes = nonRetryableCodes;
 		this.apiHeader = apiHeader;
 		this.maxRequestsPerMinute = maxRequestsPerMinute;
 		this.requestInterval = 60000 / maxRequestsPerMinute;
@@ -86,39 +91,49 @@ export class MainApi {
 		maxRetries: number = 3,
 		delay: number = 1000
 	): Promise<T> {
+		// Check circuit breaker state first
 		if (this.circuitBreaker.isOpen()) {
 			const state = this.circuitBreaker.getState();
 			const stateStr = CircuitState[state];
-			Loggers.get().warn(`Circuit breaker is ${stateStr}, rejecting request`);
-			throw new LocaleError('error.riot.circuit_open', {
-				message: `Too many failures, circuit is ${stateStr.toLowerCase()}`,
-			});
+			new Error(`Circuit breaker is ${stateStr}, rejecting request`);
 		}
 
 		let lastError: Error | null = null;
-		for (let attempt = 0; attempt < maxRetries; attempt++) {
+		for (let attempt = 0; attempt <= maxRetries; attempt++) {
 			try {
 				const result = await requestFn();
 				this.circuitBreaker.recordSuccess();
 				return result;
 			} catch (error: any) {
 				lastError = error;
-				Loggers.get().warn(
-					`Request failed (attempt ${attempt + 1}/${maxRetries}): ${error.message}`
-				);
 
-				// Don't retry for certain error types
-				if (error.response?.status === 404 || error.response?.status === 403) {
+				// Don't retry for specified status codes but propagate the error
+				if (
+					error.response?.status &&
+					this.nonRetryableCodes.includes(error.response.status)
+				) {
+					this.circuitBreaker.recordFailure();
 					throw error;
 				}
 
-				// Exponential backoff
-				const waitTime = delay * Math.pow(2, attempt);
+				// If this was the last attempt, break out and record failure
+				if (attempt === maxRetries) {
+					break;
+				}
+
+				Loggers.get().warn(
+					`Request failed (attempt ${attempt + 1}/${maxRetries + 1}): ${error.message}`
+				);
+
+				// Exponential backoff with jitter for better distributed retries
+				const jitter = Math.random() * 0.3 + 0.85; // Random value between 0.85 and 1.15
+				const waitTime = Math.floor(delay * Math.pow(2, attempt) * jitter);
 				Loggers.get().info(`Retrying after ${waitTime}ms`);
 				await new Promise((resolve) => setTimeout(resolve, waitTime));
 			}
 		}
 
+		// Only record a failure if we've exhausted all retry attempts
 		this.circuitBreaker.recordFailure();
 		throw lastError || new Error('Unknown error during retry');
 	}
@@ -274,7 +289,6 @@ export class MainApi {
 						error
 					);
 				}
-				this.processQueue();
 			}, this.requestInterval);
 
 			// Start rate limit reset timer

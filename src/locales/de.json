@@ -7,8 +7,7 @@
 			"no_discord_token": "Das Discord-Token ist nicht konfiguriert. Bitte richten Sie Ihr Discord-Bot-Token ein.",
 			"no_discord_id": "Die Discord-ID ist nicht konfiguriert. Bitte geben Sie eine gültige Discord-ID an.",
 			"no_interaction": "Die angegebene Interaktion konnte nicht gefunden werden. Bitte stellen Sie sicher, dass sie gültig ist.",
-			"no_guild_id": "Der Befehl wurde nicht von einem Server gesendet. Bitte stellen Sie sicher, dass Sie sich in einem Discord-Server befinden.",
-			"wrong_userId": "Die userId konnte auf diesem Server nicht gefunden werden."
+			"no_guild_id": "Der Befehl wurde nicht von einem Server gesendet. Bitte stellen Sie sicher, dass Sie sich in einem Discord-Server befinden."
 		},
 		"_default": "Fehler: {{message}}"
 	}
